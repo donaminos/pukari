@@ -3,7 +3,7 @@ Meteor.publish('loggedInUser', (userId)=> {
 });
 
 Meteor.publish('meetings', (cityId)=> {
-  return Meetings.find({city: cityId});
+  return Meetings.find({city: cityId}, {sort: {date: 1}});
 });
 
 Meteor.publish('oneMeeting', (meetingId)=> {

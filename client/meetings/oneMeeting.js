@@ -6,14 +6,22 @@ Template.oneMeeting.helpers({
   },
 
   requestUsers() {
-    let meetingId = FlowRouter.getParam('meetingId');
-    let requestUsers = Meetings.findOne({_id: meetingId}).requests;
+    // let meetingId = FlowRouter.getParam('meetingId');
+    let requestUsers = this.requests;
     return requestUsers;
   },
 
   meetingOwner() {
-    let meetingId = FlowRouter.getParam('meetingId');
-    return Meetings.findOne({_id: meetingId}).userId == Meteor.userId();
+    // let meetingId = FlowRouter.getParam('meetingId');
+    return this.userId == Meteor.userId();
+  },
+
+  cancelMeeting() {
+    if(Meteor.userId() == this.bookedUserId) {
+      return true;
+    } else {
+      return false;
+    }
   }
 });
 
@@ -21,12 +29,35 @@ Template.oneMeeting.events({
   'click .accept-request': (e)=> {
     e.preventDefault();
     let meetingId = FlowRouter.getParam('meetingId');
-    console.log(meetingId);
     Meteor.call('finializeMeeting', meetingId, e.target.id, (err, result)=> {
       if(err) {
 
       } else {
         return;
+      }
+    });
+  },
+
+  'click .cancel-meeting': (e)=> {
+    e.preventDefault();
+    let meetingId = FlowRouter.getParam('meetingId');
+    Meteor.call('cancelMeeting', meetingId, (err, result)=> {
+      if(err) {
+
+      } else {
+        return;
+      }
+    });
+  },
+
+  'click .delete-meeting': (e)=> {
+    e.preventDefault();
+    let meetingId = FlowRouter.getParam('meetingId');
+    Meteor.call('removeMeeting', meetingId, (err, result)=> {
+      if(err) {
+
+      } else {
+        FlowRouter.go('/city/' + Meteor.user().profile.city);
       }
     });
   }

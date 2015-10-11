@@ -1,10 +1,15 @@
-/* */
-body {
-  font-size: 18px;
-}
+/* General */
 
 li {
   list-style: none;
+}
+
+a, a:hover {
+  text-decoration: none;
+}
+
+p {
+  font-size: 1.1em;
 }
 
 /* cities > city */
@@ -15,6 +20,7 @@ li {
   width: 220px;
   text-align: center;
   display: inline-block;
+  margin: 5px;
 }
 
 .authorImg {

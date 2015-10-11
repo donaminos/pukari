@@ -28,14 +28,15 @@
     <div class="meeting">
       <a href="/meetings/{{this._id}}">
         <img class="authorImg" src="{{userImage}}" alt="Profile Image" />
+
+        <p>{{this.title}}</p>
+        <p>{{this.place}}</p>
+        <p>{{this.date}}</p>
+        <hr>
+        <p>Click for details</p>
       </a>
-      <p>{{this.title}}</p>
-      <p>Place: {{this.place}}</p>
-      <p>Date: {{this.date}}</p>
       <hr>
-      <p>{{this.message}}</p>
-      <hr>
-      <button id="{{this._id}}" class="request btn btn-lg btn-info">{{requestText}}</button>
+      <button id="{{this._id}}" class="request btn btn-lg  {{requestBtn}}">{{requestText}}</button>
     </div>
   </li>
 </template>

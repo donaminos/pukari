@@ -1,7 +1,7 @@
 # Pukari
 Created onMeteor Distributed Hackathon 2015, October 10.
 
-### [DEMO]()
+### [DEMO](http://pukari.meteor.com/)
 
 ### What is Pukari?
 - Create and find an individual meetup to grab a coffee and chat.
@@ -15,6 +15,29 @@ Example 2, you want to find a partner to go to gym together :)
 
 ### Packages I used
 ```
+meteor-base             # Packages every Meteor app needs to have
+mobile-experience       # Packages for a great mobile UX
+mongo                   # The database Meteor supports right now
+blaze-html-templates    # Compile .html files into Meteor Blaze views
+session                 # Client-side reactive dictionary for your app
+jquery                  # Helpful client-side library
+tracker                 # Meteor's client-side reactive programming library
+
+standard-minifiers      # JS/CSS minifiers run for production mode
+es5-shim                # ECMAScript 5 compatibility for older browsers.
+ecmascript              # Enable ECMAScript2015+ syntax in app code
+
+kadira:blaze-layout
+kadira:flow-router
+twbs:bootstrap
+useraccounts:bootstrap
+useraccounts:flow-routing
+service-configuration
+accounts-facebook
+meteorhacks:fast-render
+check
+tsega:bootstrap3-datetimepicker
+underscore
 ```
 
 
