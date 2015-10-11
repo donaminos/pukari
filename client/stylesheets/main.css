@@ -1,0 +1,31 @@
+/* */
+body {
+  font-size: 18px;
+}
+
+li {
+  list-style: none;
+}
+
+/* cities > city */
+.meeting-list {
+  box-shadow: 0px 0px 3px #000;
+  border-radius: 20px;
+  padding: 10px;
+  width: 220px;
+  text-align: center;
+  display: inline-block;
+}
+
+.authorImg {
+  width: 100px;
+  border-radius: 50%;
+}
+
+/* cities > chooseCity */
+.my-city {
+  color: #33CC66;
+}
+.city-btn {
+  margin: 5px;
+}

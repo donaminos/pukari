@@ -1,0 +1,35 @@
+<template name="oneMeeting">
+  <div class="oneMeeting">
+    {{#with meeting}}
+      <h1>Title: {{title}}</h1>
+      <p>by {{author}}</p>
+      <img class="authorImg" src="http://graph.facebook.com/{{fbId}}/picture/?type=large" alt="Profile Image" />
+      <p>Place: {{place}}</p>
+      <p>Date: {{date}}</p>
+
+      <hr>
+
+      <p>{{message}}</p>
+
+      <hr>
+      {{#if booked}}
+        <p>BOOKED with</p>
+        <img class="authorImg" src="http://graph.facebook.com/{{bookedUser}}/picture/?type=large" alt="profile image" />
+      {{/if}}
+
+      {{#if meetingOwner}}
+        <ul>
+          <h3>Requested Users</h3>
+          {{#each requestUsers}}
+            <li>
+              <img class="authorImg" src="http://graph.facebook.com/{{this.userFBID}}/picture/?type=large" alt="profile image" />
+              {{this.userName}}
+              <button class="accept-request btn btn-lg btn-success" id="{{this.userFBID}}">Accept</button>
+            </li>
+          {{/each}}
+        </ul>
+      {{/if}}
+
+    {{/with}}
+  </div>
+</template>

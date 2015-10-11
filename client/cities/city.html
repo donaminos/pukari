@@ -1,0 +1,41 @@
+<template name="city">
+  <h1>Current City: {{cityNamify}}</h1>
+  <a href="/city/{{cityId}}/create_meeting">
+    <button class="btn btn-lg btn-info">Create individual meeting</button>
+  </a>
+
+  <a href="/choose_city">
+    <button class="btn btn-lg btn-warning">Change your city</button>
+  </a>
+
+  <h3>Meeting Lists of {{cityNamify}}</h3>
+  <ul>
+    {{#if haveMeetings}}
+      {{#each meetings}}
+        {{> eachMeeting}}
+      {{/each}}
+    {{else}}
+      <p>
+        No Meetings
+      </p>
+    {{/if}}
+  </ul>
+</template>
+
+
+<template name="eachMeeting">
+  <li class="meeting-list">
+    <div class="meeting">
+      <a href="/meetings/{{this._id}}">
+        <img class="authorImg" src="{{userImage}}" alt="Profile Image" />
+      </a>
+      <p>{{this.title}}</p>
+      <p>Place: {{this.place}}</p>
+      <p>Date: {{this.date}}</p>
+      <hr>
+      <p>{{this.message}}</p>
+      <hr>
+      <button id="{{this._id}}" class="request btn btn-lg btn-info">{{requestText}}</button>
+    </div>
+  </li>
+</template>

@@ -1,0 +1,18 @@
+<template name="chooseCity">
+  <h1>Choose Your City</h1>
+  <h3>My City: <span class="my-city">{{cityNamify}}</span></h3>
+
+  {{> cityList}}
+</template>
+
+<template name="cityList">
+  {{#each cities}}
+    <button class="btn btn-lg btn-default city-btn" id="{{cityName}}">{{this}}</button>
+  {{/each}}
+  <hr>
+  {{#if cityChosen}}
+    <a href="/" class="btn btn-lg btn-success">
+      Go to chosen city
+    </a>
+  {{/if}}
+</template>
