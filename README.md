@@ -1,6 +1,8 @@
 # Pukari
 Created onMeteor Distributed Hackathon 2015, October 10.
 
+- [Submission on Devpost](http://devpost.com/software/pukari)
+
 ### [DEMO](http://pukari.meteor.com/)
 
 ### [YouTube Demo Video](https://youtu.be/Vokvs7SAlbc)
