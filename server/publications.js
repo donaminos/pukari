@@ -9,3 +9,7 @@ Meteor.publish('meetings', (cityId)=> {
 Meteor.publish('oneMeeting', (meetingId)=> {
   return Meetings.find({_id: meetingId});
 });
+
+Meteor.publish('usersMeetings', (userId)=> {
+  return Meetings.find({userId: userId}, {sort: {date: 1}});
+});

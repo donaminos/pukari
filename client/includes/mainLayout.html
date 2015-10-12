@@ -9,7 +9,9 @@
 
 <template name="mainLayout">
   {{> Template.dynamic template=top}}
-  <div class="container">
+  {{> errors}}
+  <div class="container centering">
     {{> Template.dynamic template=content}}
   </div>
+  {{> Template.dynamic template=footer}}
 </template>

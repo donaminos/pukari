@@ -22,6 +22,30 @@ Template.oneMeeting.helpers({
     } else {
       return false;
     }
+  },
+
+  requestText() {
+    if(this.booked) {
+      return 'Already Booked';
+    } else {
+      if(arrayObjectIndexOf(this.requests, Meteor.user().profile.name, 'userName') > -1) {
+        return "Cancel Request";
+      } else {
+        return "Request to meet";
+      }
+    }
+  },
+
+  requestBtn() {
+    if(this.booked) {
+      return 'disabled';
+    } else {
+      if(arrayObjectIndexOf(this.requests, Meteor.user().profile.name, 'userName') > -1) {
+        return "btn-warning";
+      } else {
+        return "btn-info";
+      }
+    }
   }
 });
 
@@ -31,7 +55,7 @@ Template.oneMeeting.events({
     let meetingId = FlowRouter.getParam('meetingId');
     Meteor.call('finializeMeeting', meetingId, e.target.id, (err, result)=> {
       if(err) {
-
+        return throwError(err.reason);
       } else {
         return;
       }
@@ -43,7 +67,7 @@ Template.oneMeeting.events({
     let meetingId = FlowRouter.getParam('meetingId');
     Meteor.call('cancelMeeting', meetingId, (err, result)=> {
       if(err) {
-
+        return throwError(err.reason);
       } else {
         return;
       }

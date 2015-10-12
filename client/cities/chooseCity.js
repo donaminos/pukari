@@ -35,9 +35,17 @@ Template.cityList.events({
   'click button': (e)=> {
     e.preventDefault();
 
-    Meteor.users.update(
-      {_id: Meteor.userId()},
-      {$set: {"profile.city": e.target.id}}
-    );
+    // Meteor.users.update(
+    //   {_id: Meteor.userId()},
+    //   {$set: {"profile.city": e.target.id}}
+    // );
+
+    Meteor.call('chooseCity', e.target.id, (err, result)=> {
+      if(err){
+        return throwError(err.reason);
+      } else {
+        FlowRouter.go('/city/' + Meteor.user().profile.city);
+      }
+    });
   }
 });

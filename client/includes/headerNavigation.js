@@ -1,4 +1,4 @@
-Template.header.events({
+Template.headerNavigation.events({
   // User log out and redirect to sign in page
   'click #log-out': (e)=> {
     e.preventDefault();

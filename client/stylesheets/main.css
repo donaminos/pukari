@@ -1,7 +1,31 @@
 /* General */
+body {
+  min-height:100vh;
+  /* fallback */
+  background: -webkit-linear-gradient(top, #b3dced, #207ce5);
+
+  /* Safari 4-5, Chrome 1-9 */
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#b3dced), to(#207ce5));
+
+  /* Safari 5.1, Chrome 10+ */
+  background: -webkit-linear-gradient(top, #b3dced, #207ce5);
+
+  /* Firefox 3.6+ */
+  background: -moz-linear-gradient(top, #b3dced, #207ce5);
+
+  /* IE 10 */
+  background: -ms-linear-gradient(top, #b3dced, #207ce5);
+
+  /* Opera 11.10+ */
+  background: -o-linear-gradient(top, #b3dced, #207ce5);
+}
 
 li {
   list-style: none;
+}
+
+a {
+  color: #111;
 }
 
 a, a:hover {
@@ -10,6 +34,23 @@ a, a:hover {
 
 p {
   font-size: 1.1em;
+}
+
+footer {
+  margin-top: 50px;
+}
+
+.centering {
+  text-align: center;
+}
+
+.left-align {
+  text-align: left;
+}
+
+.navbar-brand.overwrite-brand,
+.navbar-brand.overwrite-brand:hover {
+  color: #13da32;
 }
 
 /* cities > city */
@@ -30,8 +71,47 @@ p {
 
 /* cities > chooseCity */
 .my-city {
-  color: #33CC66;
+  color: #027528;
 }
 .city-btn {
   margin: 5px;
+}
+
+
+
+
+
+@-webkit-keyframes fadeOut {
+  0% {opacity: 0;}
+  10% {opacity: 1;}
+  90% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+@keyframes fadeOut {
+  0% {opacity: 0;}
+  10% {opacity: 1;}
+  90% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+.errors{
+  position: fixed;
+  z-index: 10000;
+  padding: 10px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  pointer-events: none;
+}
+.alert {
+          animation: fadeOut 2700ms ease-in 0s 1 forwards;
+  -webkit-animation: fadeOut 2700ms ease-in 0s 1 forwards;
+     -moz-animation: fadeOut 2700ms ease-in 0s 1 forwards;
+  width: 250px;
+  float: right;
+  clear: both;
+  margin-bottom: 5px;
+  pointer-events: auto;
 }

@@ -3,6 +3,20 @@ Template.createMeeting.onRendered(()=>{
   this.$('.datetimepicker').datetimepicker();
 });
 
+// Reset Errors
+Template.createMeeting.created = ()=> {
+  Session.set('meetingCreateErrors', {});
+}
+
+Template.createMeeting.helpers({
+  errorMessage(field) {
+    return Session.get('meetingCreateErrors')[field];
+  },
+  errorClass(field) {
+    return !!Session.get('meetingCreateErrors')[field] ? 'has-error' : '';
+  }
+});
+
 Template.createMeeting.events({
   // Submit a meeting
   'submit form': (e)=> {
@@ -16,11 +30,16 @@ Template.createMeeting.events({
       city: Meteor.user().profile.city
     };
 
+    let errors = validateMeeting(meeting);
+    if(errors.title || errors.place || errors.date || errors.message) {
+      return Session.set('meetingCreateErrors', errors);
+    }
+
     Meteor.call('meetingInsert', meeting, (err, result)=> {
       if(err) {
-
+        return throwError(err.reason);
       } else {
-        FlowRouter.go('/city/' + Meteor.user().profile.city);  
+        FlowRouter.go('/city/' + Meteor.user().profile.city);
       }
     });
   }

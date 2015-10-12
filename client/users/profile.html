@@ -3,17 +3,28 @@
     {{currentUser.profile.name}}
   </h3>
   <p>
-    Your City: {{cityNamify}}
+    Chosen City: {{cityNamify}}
   </p>
-  <div class="">
-    <img src="{{userImage}}" alt="Profile" />
-  </div>
-  <h3>Meetup event created</h3>
-  <p>
-    <!-- {{userFullName}} -->
-  </p>
-
-
-
-
+  <img class="authorImg" src="{{userImage}}" alt="Profile" />
+  {{#if haveMeetingsYet}}
+    <h3>Meetings created</h3>
+    <ul>
+      {{#each usersMeetings}}
+        <li class="meeting-list">
+          <div class="meeting">
+            <a href="/meetings/{{this._id}}">
+              <p>{{this.title}}</p>
+              <p>{{this.place}}</p>
+              <p>{{meetingCity}}</p>
+              <p>{{this.date}}</p>
+            </a>
+            <hr>
+            <button id="{{this._id}}" class="request btn btn-lg  {{requestBtn}}">{{requestText}}</button>
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <h3>No meetings created</h3>
+  {{/if}}
 </template>

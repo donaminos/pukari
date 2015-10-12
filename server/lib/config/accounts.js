@@ -4,8 +4,8 @@ Meteor.startup(function() {
   ServiceConfiguration.configurations.update(
     { service: "facebook" },
     { $set: {
-        appId: APP_ID_TEST,
-        secret: SECRET_TEST
+        appId: APP_ID_PRODUCTION,
+        secret: SECRET_PRODUCTION
       }
     },
     { upsert: true }

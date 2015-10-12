@@ -45,6 +45,8 @@
         {{/if}}
         <hr>
         <button class="delete-meeting btn btn-lg btn-danger">Delete Meeting</button>
+      {{else}}
+        <button class="request btn btn-lg {{requestBtn}}">{{requestText}}</button>
       {{/if}}
 
     {{/with}}

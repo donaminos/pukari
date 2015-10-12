@@ -1,11 +1,3 @@
-// Check if user already requested to meet
-function arrayObjectIndexOf(myArray, searchTerm, property) {
-  for(var i = 0, len = myArray.length; i < len; i++) {
-    if (myArray[i][property] === searchTerm) return i;
-  }
-  return -1;
-}
-
 Template.city.helpers({
   cityId() {
     return Meteor.user().profile.city;
@@ -34,7 +26,7 @@ Template.city.events({
 
     Meteor.call('requestToMeet', e.target.id, (err, result)=> {
       if(err) {
-
+        return throwError(err.reason);
       } else {
         FlowRouter.go('/city/' + Meteor.user().profile.city);
       }
@@ -46,7 +38,7 @@ Template.city.events({
 
     Meteor.call('undoRequest', e.target.id, (err, result)=> {
       if(err) {
-
+        return throwError(err.reason);
       } else {
         FlowRouter.go('/city/' + Meteor.user().profile.city);
       }
@@ -85,3 +77,18 @@ Template.eachMeeting.helpers({
     }
   }
 });
+
+
+// Check if user already requested to meet
+// function arrayObjectIndexOf(myArray, searchTerm, property) {
+//   for(var i = 0, len = myArray.length; i < len; i++) {
+//     if (myArray[i][property] === searchTerm) return i;
+//   }
+//   return -1;
+// }
+
+// String.prototype.capitalize = function(){
+//   return this.toLowerCase().replace( /\b\w/g, (m)=> {
+//     return m.toUpperCase();
+//   });
+// };
