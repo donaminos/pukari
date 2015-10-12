@@ -36,7 +36,11 @@
         <p>Click for details</p>
       </a>
       <hr>
-      <button id="{{this._id}}" class="request btn btn-lg  {{requestBtn}}">{{requestText}}</button>
+      {{#if meetingOwner}}
+        <p>You are owner</p>
+      {{else}}
+        <button id="{{this._id}}" class="request btn btn-lg  {{requestBtn}}">{{requestText}}</button>
+      {{/if}}
     </div>
   </li>
 </template>

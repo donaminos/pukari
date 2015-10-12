@@ -17,7 +17,6 @@ Template.city.helpers({
   haveMeetings() {
     return Meetings.find({}).fetch().length > 0;
   }
-
 });
 
 Template.city.events({
@@ -43,11 +42,15 @@ Template.city.events({
         FlowRouter.go('/city/' + Meteor.user().profile.city);
       }
     });
-  },
+  }
 });
 
 
 Template.eachMeeting.helpers({
+  meetingOwner() {
+    return this.userId == Meteor.userId();
+  },
+
   userImage() {
     let imageSrc = "http://graph.facebook.com/" + this.fbId + "/picture/?type=large";
     return imageSrc;

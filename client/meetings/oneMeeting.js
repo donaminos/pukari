@@ -79,9 +79,33 @@ Template.oneMeeting.events({
     let meetingId = FlowRouter.getParam('meetingId');
     Meteor.call('removeMeeting', meetingId, (err, result)=> {
       if(err) {
-
+        return throwError(err.reason);
       } else {
         FlowRouter.go('/city/' + Meteor.user().profile.city);
+      }
+    });
+  },
+
+  'click .request.btn-info': (e)=> {
+    e.preventDefault();
+    let meetingId = FlowRouter.getParam('meetingId');
+    Meteor.call('requestToMeet', meetingId, (err, result)=> {
+      if(err) {
+        return throwError(err.reason);
+      } else {
+        return;
+      }
+    });
+  },
+
+  'click .request.btn-warning': (e)=> {
+    e.preventDefault();
+    let meetingId = FlowRouter.getParam('meetingId');
+    Meteor.call('undoRequest', meetingId, (err, result)=> {
+      if(err) {
+        return throwError(err.reason);
+      } else {
+        return;
       }
     });
   }
