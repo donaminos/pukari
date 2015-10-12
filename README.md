@@ -46,6 +46,9 @@ tsega:bootstrap3-datetimepicker
 underscore
 ```
 
+### Known issue
+- [Cannot login from Chrome browser on Mobile](https://github.com/meteor-useraccounts/core/issues/472)
+
 
 ### Resources
 - [flow-router github](https://github.com/kadirahq/flow-router)
